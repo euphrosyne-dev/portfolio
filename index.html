@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Lemaitre | Portfolio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#accueil">Nathan Lemaitre</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#a-propos">À Propos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+        
+        <section id="accueil" class="d-flex align-items-center vh-100 bg-light">
+            <div class="container text-center">
+                <h1 class="display-3 fw-bold">Nathan Lemaitre</h1>
+                <p class="lead">Étudiant Pré-MSc Epitech | En transition vers la Cybersécurité</p>
+                <a href="#projets" class="btn btn-primary btn-lg mt-3">Voir mes projets</a>
+            </div>
+        </section>
+
+        <section id="a-propos" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Mon Parcours</h2>
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <p class="text-justify">
+                            Actuellement en Pré-MSc à Epitech pour une reconversion professionnelle. Je me concentre sur l'acquisition rapide des bases solides en programmation (JS/PHP/Python) et en systèmes/réseaux.
+                            Mon objectif est d'allier ma rigueur issue de mon expérience précédente avec les compétences techniques nécessaires pour me spécialiser en cybersécurité.
+                        </p>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="py-5 bg-secondary text-white">
+            <div class="container">
+                <h2 class="text-center mb-5">Mes Projets Techniques</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 bg-dark border-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Projet 1 : Nom du Projet (Ex: Scanner de ports en Python)</h5>
+                                <p class="card-text">Description courte du projet, des technologies utilisées (Python, Réseau) et de l'objectif.</p>
+                                <a href="https://github.com/euphrosyne-dev/my-resume" target="_blank" class="btn btn-outline-light">Détails / GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="competences" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Compétences Techniques</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="text-primary">Langages</h4>
+                        <ul class="list-unstyled">
+                            <li>JavaScript (Bases)</li>
+                            <li>HTML / CSS</li>
+                            <li>Python (Scripting)</li>
+                            <li>PHP</li>
+                            <li>Shell (Bash)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-primary">Outils & Systèmes</h4>
+                        <ul class="list-unstyled">
+                            <li>Linux (Kali, Ubuntu)</li>
+                            <li>Virtualisation (VirtualBox)</li>
+                            <li>Git / GitHub</li>
+                            <li>Bootstrap</li>
+                            <li>Laravel</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-primary">Cybersécurité (En cours)</h4>
+                        <ul class="list-unstyled">
+                            <li>Fondamentaux Réseau (OSI)</li>
+                            <li>Plateformes CTF (TryHackMe)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="mb-4">Contactez-moi</h2>
+                <p>Je suis toujours ouvert aux opportunités et pour échanger sur la technologie et la cybersécurité.</p>
+                <ul class="list-unstyled d-flex justify-content-center">
+                    <li class="mx-3"><a href="mailto:nathan.lemaitre.pro@gmail.com" class="text-dark fs-3">Email</a></li>
+                    <li class="mx-3"><a href="https://linkedin.com/in/nathan-lemaitre" target="_blank" class="text-dark fs-3">LinkedIn</a></li>
+                    <li class="mx-3"><a href="https://github.com/euphrosyne-dev/" target="_blank" class="text-dark fs-3">GitHub</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Nathan Lemaitre.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="js/script.js"></script>
+
+</body>
+</html>
