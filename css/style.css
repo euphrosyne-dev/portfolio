@@ -1,0 +1,90 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+
+.navbar .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.photo-profil {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.photo-profil:hover {
+    filter: grayscale(0%);
+}
+
+section {
+    margin: 0;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+#accueil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 6rem; /* espace pour la navbar */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: 100%;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .photo-profil {
+        max-width: 60vw;
+    }
+
+    h1.display-3 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    p.lead {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    section {
+        text-align: center;
+    }
+}
