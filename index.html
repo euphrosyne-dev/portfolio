@@ -1,162 +1,319 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Lemaitre | Portfolio</title>
+    <title>Nathan Lemaitre | Portfolio Cybersécurité</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        tilt: 'tilt 10s infinite linear'
+                    },
+                    keyframes: {
+                        tilt: {
+                            '0%, 50%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(1deg)' },
+                            '75%': { transform: 'rotate(-1deg)' },
+                        }
+                    }
+                }
+            },
+            plugins: [
+                function ({ addComponents }) {
+                    addComponents({
+                        '.skill-pill': {
+                            '@apply bg-slate-700 text-sky-300 text-sm font-semibold px-4 py-2 rounded-full shadow-md transition-all duration-300 hover:bg-slate-600 hover:text-sky-200 cursor-default': {},
+                        }
+                    })
+                }
+            ]
+        }
+    </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: #38bdf8;
+            animation: blink 0.7s infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .nav-link-active {
+            color: #38bdf8;
+            position: relative;
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #38bdf8;
+            transform: scaleX(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body>
+<body class="antialiased">
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#accueil">Nathan Lemaitre</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#a-propos">À Propos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="text-xl font-bold text-white" href="#accueil">Nathan L.</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#a-propos" class="nav-link text-slate-300 hover:text-sky-400 transition">À Propos</a>
+                <a href="#projets" class="nav-link text-slate-300 hover:text-sky-400 transition">Projets</a>
+                <a href="#competences" class="nav-link text-slate-300 hover:text-sky-400 transition">Compétences</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-sky-400 transition">Contact</a>
             </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
         </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800/90 backdrop-blur-sm">
+            <a href="#a-propos" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">À Propos</a>
+            <a href="#projets" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Projets</a>
+            <a href="#competences" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Compétences</a>
+            <a href="#contact" class="block py-2 px-6 text-slate-300 hover:bg-slate-700">Contact</a>
+        </div>
     </header>
 
     <main>
 
-        <section id="accueil" class="bg-light">
-            <div class="container text-center">
-                <h1 class="display-3 fw-bold">Nathan Lemaitre</h1>
-                <p class="lead">Étudiant Pré-MSc Epitech | En transition vers la Cybersécurité</p>
-                <a href="#projets" class="btn btn-primary btn-lg mt-3">Voir mes projets</a>
+        <section id="accueil" class="min-h-screen flex items-center justify-center text-center px-4">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight">
+                    Nathan Lemaitre
+                </h1>
+                <p class="text-lg md:text-2xl text-sky-400">
+                    <span id="typewriter"></span><span class="typewriter-cursor"></span>
+                </p>
+                <a href="#projets"
+                    class="inline-block bg-sky-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg shadow-sky-500/30 hover:bg-sky-600 transform hover:scale-105 transition-all duration-300">
+                    Découvrir mes projets
+                </a>
             </div>
         </section>
 
 
-        <section id="a-propos" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-4">Mon Parcours</h2>
+        <section id="a-propos" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Mon Parcours</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mt-4 rounded"></div>
+                </div>
 
-                <div class="row align-items-center">
-
-                    <div class="col-md-4 text-center">
-                        <img src="img/ma_photo_profil.jpg" alt="Photo de profil"
-                            class="img-fluid rounded-circle shadow-lg photo-profil">
+                <div class="flex flex-col md:flex-row items-center gap-12 reveal">
+                    <div class="md:w-1/3 flex-shrink-0">
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-sky-600 to-cyan-400 rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt">
+                            </div>
+                            <img src="/img/ma_photo_profil.jpg" alt="Photo de Nathan Lemaitre"
+                                
+                                class="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full object-cover shadow-2xl transition-all duration-300 group-hover:grayscale-0 grayscale">
+                        </div>
                     </div>
-
-                    <div class="col-md-8">
-                        <p class="text-justify mt-4 mt-md-0">
-                            Actuellement en Pré-MSc à Epitech pour une reconversion professionnelle. Je me concentre
-                            sur l'acquisition rapide des bases solides en programmation (JS/PHP/Python) et en
+                    <div class="md:w-2/3 text-center md:text-left text-lg space-y-4">
+                        <p>
+                            Actuellement en Pré-MSc à Epitech pour une reconversion professionnelle. Je me concentre sur
+                            l'acquisition rapide des bases solides en programmation (JS/PHP/Python) et en
                             systèmes/réseaux.
                         </p>
-                        <p class="text-justify">
-                            Mon objectif est d'allier ma rigueur issue de mon expérience précédente avec les
-                            compétences techniques nécessaires pour me spécialiser en cybersécurité.
+                        <p>
+                            Mon objectif est d'allier ma rigueur issue de mon expérience précédente avec les compétences
+                            techniques nécessaires pour me spécialiser en <span
+                                class="text-sky-400 font-semibold">cybersécurité</span>.
                         </p>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <section id="projets" class="py-5 bg-secondary text-white">
-            <div class="container">
-                <h2 class="text-center mb-5">Mes Projets Techniques</h2>
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    <div class="col">
-                        <div class="card h-100 bg-dark border-light">
-                            <div class="card-body">
-                                <h5 class="card-title">Projet 1 : Nom du Projet (Ex: Scanner de ports en Python)</h5>
-                                <p class="card-text">Description courte du projet, des technologies utilisées (Python,
-                                    Réseau) et de l'objectif.</p>
-                                <a href="https://github.com/euphrosyne-dev/my-resume" target="_blank"
-                                    class="btn btn-outline-light">Détails / GitHub</a>
-                            </div>
+        <section id="projets" class="py-20 md:py-32 bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Mes Projets Techniques</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mt-4 rounded"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="reveal bg-slate-900/50 rounded-lg shadow-lg overflow-hidden border border-slate-700 hover:border-sky-500 transition-all duration-300 transform hover:-translate-y-2 group">
+                        <div class="p-6 flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-2">Scanner de Ports en Python</h3>
+                            <p class="text-slate-400 flex-grow mb-4">
+                                Description courte du projet, des technologies utilisées (Python, Réseau) et de
+                                l'objectif.
+                            </p>
+                            <a href="https://github.com/euphrosyne-dev/my-resume" target="_blank"
+                                class="mt-auto self-start flex items-center text-sky-400 font-semibold group-hover:text-sky-300 transition">
+                                Voir sur GitHub
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="ml-2 group-hover:translate-x-1 transition-transform">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="competences" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-5">Compétences Techniques</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="text-primary">Langages</h4>
-                        <ul class="list-unstyled">
-                            <li>JavaScript (Bases)</li>
-                            <li>HTML / CSS</li>
-                            <li>Python (Scripting)</li>
-                            <li>PHP</li>
-                            <li>Shell (Bash)</li>
-                        </ul>
+        <section id="competences" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Compétences Techniques</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mt-4 rounded"></div>
+                </div>
+                <div class="space-y-10">
+                    <div class="reveal">
+                        <h3 class="text-2xl font-semibold text-white mb-4 text-center">Langages</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">HTML / CSS</span>
+                            <span class="skill-pill">Python</span>
+                            <span class="skill-pill">PHP</span>
+                            <span class="skill-pill">Shell (Bash)</span>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="text-primary">Outils & Systèmes</h4>
-                        <ul class="list-unstyled">
-                            <li>Linux (Kali, Ubuntu)</li>
-                            <li>Virtualisation (VirtualBox)</li>
-                            <li>Git / GitHub</li>
-                            <li>Bootstrap</li>
-                            <li>Laravel</li>
-                        </ul>
+                    <div class="reveal">
+                        <h3 class="text-2xl font-semibold text-white mb-4 text-center">Outils & Systèmes</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-pill">Linux (Kali, Ubuntu)</span>
+                            <span class="skill-pill">Virtualisation (VirtualBox)</span>
+                            <span class="skill-pill">Git / GitHub</span>
+                            <span class="skill-pill">Laravel</span>
+                            <span class="skill-pill">Docker</span>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="text-primary">Cybersécurité (En cours)</h4>
-                        <ul class="list-unstyled">
-                            <li>Fondamentaux Réseau (OSI)</li>
-                            <li>Plateformes CTF (TryHackMe)</li>
-                        </ul>
+                    <div class="reveal">
+                        <h3 class="text-2xl font-semibold text-white mb-4 text-center">Cybersécurité (En cours)</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-pill">Fondamentaux Réseau (OSI)</span>
+                            <span class="skill-pill">CTF (TryHackMe)</span>
+                            <span class="skill-pill">Analyse de vulnérabilités</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-5 bg-light">
-            <div class="container text-center">
-                <h2 class="mb-4">Contactez-moi</h2>
-                <p>Je suis toujours ouvert aux opportunités et pour échanger sur la technologie et la cybersécurité.</p>
-                <ul class="list-unstyled d-flex justify-content-center">
-                    <li class="mx-3"><a href="mailto:nathan.lemaitre.pro@gmail.com" class="text-dark fs-3">Email</a>
-                    </li>
-                    <li class="mx-3"><a href="https://linkedin.com/in/nathan-lemaitre" target="_blank"
-                            class="text-dark fs-3">LinkedIn</a></li>
-                    <li class="mx-3"><a href="https://github.com/euphrosyne-dev/" target="_blank"
-                            class="text-dark fs-3">GitHub</a></li>
-                </ul>
+        <section id="contact" class="py-20 md:py-32 bg-slate-800">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contactez-moi</h2>
+                <p class="max-w-2xl mx-auto mb-8 text-lg">
+                    Je suis ouvert aux opportunités et pour échanger sur la technologie et la cybersécurité. N'hésitez
+                    pas.
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:nathan.lemaitre.pro@gmail.com" class="text-slate-400 hover:text-sky-400 transition"
+                        aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/nathan-lemaitre" target="_blank"
+                        class="text-slate-400 hover:text-sky-400 transition" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/euphrosyne-dev/" target="_blank"
+                        class="text-slate-400 hover:text-sky-400 transition" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>&copy; 2025 Nathan Lemaitre.</p>
+    <footer class="bg-slate-900 py-6">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p>&copy; <span id="year"></span> Nathan Lemaitre. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
 
 </body>
 
 </html>
+
