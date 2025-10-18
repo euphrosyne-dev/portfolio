@@ -71,3 +71,57 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const form = document.getElementById('contact-form');
+    const notification = document.getElementById('notification-popup');
+
+    if (form) {
+        form.addEventListener('submit', function (e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+
+                        notification.classList.remove('hidden', 'translate-x-full');
+                        notification.classList.add('translate-x-0');
+                        form.reset();
+
+                        setTimeout(() => {
+                            notification.classList.remove('translate-x-0');
+                            notification.classList.add('translate-x-full');
+
+                            setTimeout(() => notification.classList.add('hidden'), 500);
+                        }, 5000);
+
+                    } else {
+                        console.log(response);
+                        alert("Une erreur s'est produite. Veuillez réessayer.");
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Une erreur s'est produite. Veuillez réessayer.");
+                });
+        });
+    }
+
+});
