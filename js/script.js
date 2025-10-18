@@ -39,21 +39,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
-        });
+    let current = '';
 
-        navLinks.forEach(link => {
-            link.classList.remove('nav-link-active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('nav-link-active');
-            }
-        });
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
     });
+
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        current = 'contact';
+    }
+
+    navLinks.forEach(link => {
+        link.classList.remove('nav-link-active');
+        if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('nav-link-active');
+        }
+    });
+});
 
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
